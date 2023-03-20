@@ -2,7 +2,7 @@
 Terraform configuration files that creates a Consul module that spins up a Consul cluster in AWS. 
 Creation of module to spin up a Consul cluster in AWS. 
 
-Prerequisites: 
+**Prerequisites:** 
 
     Terraform 
 
@@ -10,21 +10,21 @@ Prerequisites:
 
 Module: 
 
-Main.tf - This file consists of the creation of the 3 EC2 instances that I will be using as a node. The user data part is where it is tasked to install consul on the instances that this module will create, in this case it is 3 instances. (It is required to create 3 instances when using consul because it automatically nominates a leader within the cluster and you need 3 for majority.) 
+**Main.tf** - This file consists of the creation of the 3 EC2 instances that I will be using as a node. The user data part is where it is tasked to install consul on the instances that this module will create, in this case it is 3 instances. _(It is required to create 3 instances when using consul because it automatically nominates a leader within the cluster and you need 3 for majority.)_ 
 
-Variables.tf - This is the variables file which consists of the variables that I used for the module so that it would not be hard coded into the terraform code. Also, it would be easier to change in the future if you decide to change some variables. 
+**Variables.tf** - This is the variables file which consists of the variables that I used for the module so that it would not be hard coded into the terraform code. Also, it would be easier to change in the future if you decide to change some variables. 
 
-Vpc.tf - This is the vpc configuration file wherein I used a cidr block of 10.0.0.0/16. I used the ${count.index} so that the subnet would be created automatically based on the index.  
+**Vpc.tf** - This is the vpc configuration file wherein I used a cidr block of 10.0.0.0/16. I used the ${count.index} so that the subnet would be created automatically based on the index.  
 
-Igw.tf - To connect my instances in AWS using local computer.  
+**Igw.tf** - To connect my instances in AWS using local computer.  
 
-Routetable.tf - The route table is used to determine where traffic from my subnets is directed. I associated the subnets in the aws_route_table_association block.  
+**Routetable.tf** - The route table is used to determine where traffic from my subnets is directed. I associated the subnets in the aws_route_table_association block.  
 
-Sg.tf - This is the security group configuration file that determines which ports and traffic are allowed. I allowed ingress of 8300, 8500 (for http), 22 (for ssh) and egress for all.  
+**Sg.tf** - This is the security group configuration file that determines which ports and traffic are allowed. I allowed ingress of 8300, 8500 _(for http)_, 22 _(for ssh)_ and egress for all.  
 
-Outputs.tf - This is to output the public ip’s of my instances after I terraform apply the resources. A great practice to create outputs so that we do not need to access the console for other necessary information.  
+**Outputs.tf** - This is to output the public ip’s of my instances after I terraform apply the resources. A great practice to create outputs so that we do not need to access the console for other necessary information.  
 
-To use this module, create another directory containing a new main.tf and variables.tf files (this is not required, this is just another way of accessing modules) 
+To use this module, create another directory containing a new main.tf and variables.tf files _(this is not required, this is just another way of accessing modules)_
 
     provider "aws"{
         region = <region>
@@ -40,15 +40,15 @@ After terraform apply, you can connect to the instances or nodes via ssh using:
 
 After you established connection to the SSH, start the consul service with the command: 
 
-    Sudo systemctl start consul 
+    sudo systemctl start consul 
 
 If you need to restart your consul service, use this command: 
 
-    Sudo systemctl restart consul 
+    sudo systemctl restart consul 
 
 If you need to edit the configuration files of consul, use this command: 
 
-    Sudo nano /etc/consul.d/consul.hcl 
+    sudo nano /etc/consul.d/consul.hcl 
 
 Add the client nodes on to the server by using the command: 
 
