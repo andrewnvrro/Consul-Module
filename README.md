@@ -62,6 +62,8 @@ To access the console of consul, you need to provide some commands:
 
      consul agent –dev –client=0.0.0.0 
 
-After inputting that command, you can now access console via browser by using the publicip and :8500 port. Type in <publicip>:8500  
+After inputting that command, you can now access console via browser by using the publicip and :8500 port. Type in: 
+
+    <publicip>:8500  
 
  
