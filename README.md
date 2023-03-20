@@ -32,6 +32,9 @@ To use this module, create another directory containing a new main.tf and variab
     module "consul-cluster {
         source = <folder or directory where your module is created>
         *input the necessary arguments needed. E.G. cluster size, ami and instance type.*
+        
+       }
+     }
 
 You can now use terraform init, terraform plan and apply. 
 After terraform apply, you can connect to the instances or nodes via ssh using: 
