@@ -54,7 +54,9 @@ Add the client nodes on to the server by using the command:
 
     consul join <ip of server> 
 
-After doing that, you can now verify the nodes of your cluster using consul members
+After doing that, you can now verify the nodes of your cluster using the command 
+
+    consul members
 
 To access the console of consul, you need to provide some commands: 
 
