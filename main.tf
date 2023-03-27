@@ -1,13 +1,3 @@
-terraform {
-  cloud {
-    organization = "torolouandrewnavarro1"
-
-    workspaces {
-      name = "example-workspace"
-    }
-  }
-}
-
 resource "aws_instance" "consul_server" {
   count = var.cluster_size
 
