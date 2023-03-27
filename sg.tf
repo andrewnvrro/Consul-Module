@@ -39,6 +39,6 @@ resource "aws_security_group" "consul_sg" {
   }
 
   tags = {
-    Name = "consul-sg"
+    Name = "consul-sg-navarro"
   }
 }
