@@ -2,7 +2,7 @@ resource "aws_vpc" "consul_vpc" {
   cidr_block = "10.0.0.0/16"
 
   tags = {
-    Name = "consul-vpc"
+    Name = "consul-vpc-navarro"
   }
 }
 
@@ -13,6 +13,6 @@ resource "aws_subnet" "consul_subnet" {
   vpc_id     = aws_vpc.consul_vpc.id
 
   tags = {
-    Name = "consul-subnet-${count.index}"
+    Name = "consul-subnet-${count.index + 1}"
   }
 }
