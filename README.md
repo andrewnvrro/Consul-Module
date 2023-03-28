@@ -29,7 +29,7 @@ To use this module, create another directory containing a new main.tf and variab
     provider "aws"{
         region = <region>
         
-    module "consul-cluster {
+    module "consul-cluster" {
         source = <folder or directory where your module is created>
         *input the necessary arguments needed. E.G. cluster size, ami and instance type.*
         
